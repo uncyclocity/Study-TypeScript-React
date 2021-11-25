@@ -66,7 +66,7 @@
 - ### interface
 
   - **클래스 혹은 객체의 타입을 지정**할 때 사용된다.
-    👉 보통 클래스에서 많이 쓰이며, 객체는 Type Alias를 사용하는 편이다.
+    <br>👉 보통 클래스에서 많이 쓰이며, 객체는 Type Alias를 사용하는 편이다.
   - **클래스**에서 interface를 implements하기
 
     ```javascript
