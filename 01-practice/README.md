@@ -1,6 +1,6 @@
 # 1. 타입스크립트 연습
 
-> _References_ > <a href="https://react.vlpt.us/using-typescript/01-practice.html">https://react.vlpt.us/using-typescript/01-practice.html</a>
+> _References_ <br> <a href="https://react.vlpt.us/using-typescript/01-practice.html">"01. 타입스크립트 연습"</a> _.velopert_ <br> <a href="https://hyunseob.github.io/2017/01/14/typescript-generic/">"TypeScript: 제네릭(Generic)"</a> _.HyunSeob_
 
 ## 📕 주로 배운 내용
 
@@ -60,7 +60,7 @@
     console.log(sumArr([1, 2, 3, 4, 5]));
     ```
 
-    👉 코딩 중에 파라미터로 어떤 타입의 값을 넣어야 할지 알 수 있다.
+    👉 코딩 중에 파라미터로 어떤 타입의 값을 넣어야 할지 알 수 있다.<br>
     <img src="./readme_src/img1.PNG">
 
 - ### interface
@@ -179,4 +179,71 @@
     const colors: Color[] = ["orange", "yellow"];
     ```
 
-> ⚒ 작업중 ⚒
+- ### Generic
+
+  - 선언 시점이 아닌 **생성 시점에 타입을 명시**하여 다양한 타입을 사용할 수 있도록 한다.
+    <br>👉 **특정 타입에 한정짓지 않고 범용적으로 재사용**할 수 있다.
+  - 함수, 클래스, 인터페이스, 타입 Alias를 모두 지원한다.
+  - **함수**에 Generic 사용하기
+
+    ```typescript
+    function getFirstVal<T>(arr: T[]): T {
+      return arr[0];
+    }
+
+    // number 타입 배열이 들어가는 getFirstVal()
+    console.log(getFirstVal<number>([1, 2, 3, 4]));
+    // string 타입 배열이 들어가는 getFirstVal()
+    console.log(getFirstVal<string>(["hello", "world"]));
+    ```
+
+  - **클래스**에 Generic 사용하기
+
+    ```typescript
+    class Stack<T> {
+      data: T[] = [];
+
+      constructor() {}
+
+      push(item: T): void {
+        this.data.push(item);
+      }
+
+      pop(): T {
+        return this.data.pop();
+      }
+    }
+
+    // number 타입이 들어가는 스택
+    const numberStack = new Stack<number>();
+    // string 타입이 들어가는 스택
+    const stringStack = new Stack<string>();
+
+    numberStack.push(1);
+    stringStack.push("a");
+    ```
+
+  - 범용 타입을 사용하기 위해서는 `any`를 사용하는 방법도 있으나, 이는 **타입 유추**를 깨뜨린다.
+    <br>👉 자바스크립트의 그것과 같은 상태라고 할 수 있다.
+
+    ```typescript
+    class Stack {
+      data: any[] = [];
+
+      constructor() {}
+
+      push(item: any): void {
+        this.data.push(item);
+      }
+
+      pop(): any {
+        return this.data.pop();
+      }
+    }
+
+    const stack = new Stack();
+    stack.push(1);
+    stack.push("a");
+    stack.pop.substring(); // a
+    stack.pop.substring(); // TypeError
+    ```
