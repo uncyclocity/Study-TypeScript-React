@@ -8,3 +8,4 @@
 ## 🗂 목차
 
 - <a href="https://github.com/uncyclocity/Study-TypeScript-React/tree/main/01-practice">1. 타입스크립트 연습</a>
+- <a href="https://github.com/uncyclocity/Study-TypeScript-React/tree/main/02-ts-react-basic">2. 리액트 컴포넌트 타입스크립트로 작성하기</a>
